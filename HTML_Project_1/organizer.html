@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title></title>
+	
+	<script>
+        var osoby = new Map()
+        var licznik = 0
+
+        function wczytajOsoby(){
+            var plik= new XMLHttpRequest()
+            console.log("wczytywanie")
+            plik.open("GET","http://localhost/osoby.json")
+            plik.send(null)
+            plik.onreadystatechange =
+                function() {
+                    console.log(plik.status)
+                    if(plik.status == 200 && plik.readyState ==4){
+
+                        let tablica_osob = JSON.parse(plik.responseText)
+
+                        for(index in tablica_osob){
+                            let key = licznik++
+
+                            osoby.set(key, tablica_osob[index])
+                        }
+
+                        display()
+                    }
+                }
+        }
+
+	class Osoba{
+		constructor(imie, nazwisko, telefon, email, zadanie){
+		this.imie = imie
+		this.nazwisko = nazwisko
+		this.telefon = telefon
+        this.email = email
+        this.zadanie = zadanie
+	}
+
+
+	}
+	
+		function processForm(){
+		let imie = document.getElementById("imie").value;
+		let nazwisko = document.getElementById("nazwisko").value;
+		let telefon = document.getElementById("telefon").value;
+        let email = document.getElementById("email").value;
+        let zadanie = document.getElementById("zadanie").value;
+		
+		
+		let osoba = new Osoba(imie, nazwisko, telefon, email, zadanie)
+		
+        let key = licznik++
+
+        osoby.set(key, osoba)
+         display()  
+		}
+
+        function remove(key){
+            osoby.delete(key)
+            display()
+        }
+
+        function display(){
+            document.getElementById("lista").innerHTML = ""
+            for(let [key, value] of osoby){
+                document.getElementById("lista").innerHTML +=
+                "<div>" + value.imie + " " + value.nazwisko + " ma " + value.zadanie +
+                "<button onclick = remove(" + key + ")>Usun</button></div><br><br>"
+            }
+        }
+
+	</script>
+    
+    <style>
+        label{
+            display: block;
+            text-align: right;
+            width: 30%;
+            float: left;
+            clear: left;
+            margin: 5pt;
+        }
+        input, button{
+            display: block;
+            margin: 10pt;
+            width: 30%;
+            float: left;
+            clear: right;
+        }
+        hr{clear:both;}
+    </style>
+</head>
+
+<body>
+
+    <button onclick="wczytajOsoby()"> wczytaj osoby i ich zadania </button>
+
+    <form onsubmit="processForm()">
+        <label>imię</label><input type=text id="imie">
+        <label>nazwisko</label><input type=text id="nazwisko">
+        <label>telefon</label><input type="number" id="telefon">
+        <label>email</label><input type="email" id="email">
+        <label>zadanie</label><input type="zadanie" id="zadanie">
+        </form>
+		<label>&nbsp;</Label><button onclick = "processForm()">Dodaj</button>    
+        <hr>
+            <div id=lista>
+
+            </div>
+</body>
+</html>

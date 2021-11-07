@@ -1,0 +1,72 @@
+<HTML>
+   
+<html lang="pl">
+<HEAD>
+<SCRIPT LANGUAGE= "JavaScript" type= "text/javascript">
+var users = new Array("login1", "login2", "login3");
+var passwords = new Array("haslo1", "haslo2", "haslo3");
+function sprawdz_haslo(user, pass)
+{  
+  for(var i = 0; i < users.length; i++){
+    if((user == users[i]) && (pass == passwords[i]))
+      return true;
+  }
+  return false;
+}
+function check()
+{
+  var user = document.form1.user.value;
+  var pass = document.form1.pass.value;
+  if(!sprawdz_haslo(user, pass)){
+      alert('Niepoprawne hasło!');
+  }
+  else{
+    document.location.href = "main.html"; 
+  }
+}
+</SCRIPT>
+    
+    
+    
+    
+    
+    
+</HEAD>
+<BODY>
+    <body background="img/tlo.jpg">...</body>
+<CENTER>
+    <br><Br><br><Br><br><br>
+<h1><font color="brown">Wprowadź nazwę użytkownika i hasło:</font></h1>
+<FORM NAME = "form1">
+<TABLE border="1" table bgcolor="cyan"><TR>
+<TD bordercolor="#FFFFFF"><b>Użytkownik:</b></TD>
+<TD bordercolor="#FFFFFF">
+  <INPUT TYPE="text" NAME="user">
+</TD>
+</TR><TR>
+<TD bordercolor="#FFFFFF"><b>Hasło:</b></TD>
+<TD bordercolor="#FFFFFF">
+  <INPUT TYPE="password" NAME="pass">
+</TD>
+</TR><TR>
+<TD colspan="2" align="center" bordercolor="#FFFFFF">
+  <INPUT TYPE="button" VALUE="Wejdź" onClick="check();">
+</TD>
+</TR></TABLE>
+</FORM>
+    <br>
+</CENTER>
+    
+    
+    <script>
+        
+    function largeFontSize(color) {
+    document.getElementById("tekst").style.fontSize = "200%";
+    updatePage();
+        }
+    
+    </script>
+    
+    
+</BODY>
+</HTML>

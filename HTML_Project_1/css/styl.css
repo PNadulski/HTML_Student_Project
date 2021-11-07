@@ -1,0 +1,97 @@
+body
+{
+ background: url("../img/tlo.jpg");
+}
+
+#zawartosc
+{
+ width: 980px;
+ margin: 0 auto;
+ background: white;
+}
+
+#logo
+{
+ position:relative;
+ padding-top: 36px;
+}
+#logo h1
+{
+ font-size: 2.0em;
+ position: absolute;
+ right: 20px;
+ bottom: 20px;
+}
+
+#menu ul
+{
+ float: right;
+}
+
+#menu ul li 
+{
+ float: left;
+ padding: 10px 20px;
+}
+
+#menu ul li a
+{
+ color: white;
+}
+
+#menu
+{
+ position: fixed;
+ top: 0;
+ width: 980px;
+ z-index: 1;
+ background: black;
+ opacity:0.7;
+}
+
+#lewy
+{
+ float:left; 
+ width: 700px;
+ background: whitesmoke;
+}
+
+#prawy
+{
+ float: left;
+ width: 265px; 
+ margin-left: 15px;
+ background: rgba(204, 214, 241, 0.842);
+}
+
+
+
+.obrazek img
+{
+ float: left;
+}
+
+#napis_logo {
+   font-style:italic;
+  font-variant:small-caps;
+  font-weight:bold;
+  font-size:20px;
+  line-height:36px;
+  font-family:Arial, Verdana, sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
